@@ -2,6 +2,7 @@ import { createBrowserRouter,RouterProvider } from "react-router-dom";
 import {Landing,About,Cocktail,Error,HomeLayout,Newsletter} from "../src/pages/index";
 import {loader as loadingLanding} from "../src/pages/Landing";
 import { dataMe } from "./pages/About";
+import { loaderFun as loadingCocktail } from "../src/pages/Cocktail";
 
 const router = createBrowserRouter([
   {
@@ -25,7 +26,8 @@ const router = createBrowserRouter([
       },
       {
         path:"cocktail/:id",
-        element:<Cocktail/>
+        element:<Cocktail/>,
+        loader:loadingCocktail
       },
       {
         element:<Landing/>,
