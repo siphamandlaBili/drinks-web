@@ -3,6 +3,7 @@ import {Landing,About,Cocktail,Error,HomeLayout,Newsletter} from "../src/pages/i
 import {loader as loadingLanding} from "../src/pages/Landing";
 import { dataMe } from "./pages/About";
 import { loaderFun as loadingCocktail } from "../src/pages/Cocktail";
+import { action as NewsletterAction } from "./pages/Newsletter";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,8 @@ const router = createBrowserRouter([
       },
       {
         path:"newsletter",
-        element:<Newsletter/>
+        element:<Newsletter/>,
+        action:NewsletterAction
       },
       {
         path:"error",
