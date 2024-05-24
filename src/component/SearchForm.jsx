@@ -1,5 +1,13 @@
+import Wrapper from "./../assets/wrappers/SearchForm"
+import { Form,useNavigation } from "react-router-dom";
+
 const SearchForm =()=>{
-    return <h2>search form</h2>
+    return <Wrapper>
+        <Form className="form">
+            <input className="form-input" type="search" name="search" id="search"  />
+            <button type="submit" className="btn">submit</button>
+        </Form>
+    </Wrapper>
 }
 
 export default SearchForm;

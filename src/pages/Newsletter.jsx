@@ -1,13 +1,13 @@
-import { Form, redirect } from "react-router-dom";
+import { Form, redirect, useNavigation } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 
 
-export const action = async ({request})=>{
+export const action = async ({ request }) => {
     try {
         const formdata = await request.formData();
         const data = Object.fromEntries(formdata);
-        const submitdata = await axios.post("https://www.course-api.com/cocktails-newsletter",data);
+        const submitdata = await axios.post("https://www.course-api.com/cocktails-newsletter", data);
         console.log(submitdata)
         toast.success(submitdata.data.msg);
         return redirect("/");
@@ -16,11 +16,13 @@ export const action = async ({request})=>{
         return redirect("/newsletter");
     }
 
-  
+
 }
-const Newsletter = ()=>{
+const Newsletter = () => {
+    const me = useNavigation();
+    console.log(me)
     return <Form className="form" method="POST">
-        <h4 style={{textAlign:"center",marginBottom:"2rem"}}>Our Newsletter</h4>
+        <h4 style={{ textAlign: "center", marginBottom: "2rem" }}>Our Newsletter</h4>
         {/* name */}
         <div className="form-row">
             <label htmlFor="name" className="form-label">
@@ -42,7 +44,7 @@ const Newsletter = ()=>{
             </label>
             <input type="email" className="form-input" id="email" name="email" defaultValue="test@test.com" />
         </div>
-        <button type="submit" className="btn btn-block">submit</button>
+        {me.state =="submitting"?<button type="submit" className="btn btn-block" disabled={true} style={{background:"#aba9a9",cursor:"not-allowed"}}>submitting</button>:<button type="submit" className="btn btn-block">submit</button>}
     </Form>
 
 }
